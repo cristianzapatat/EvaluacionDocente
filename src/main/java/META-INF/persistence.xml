@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd" version="1.0">
+    <persistence-unit name="EvaluacionDocenteEAMPU"
+        transaction-type="JTA">
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
+        <!-- To JbossServer use java:/datasources/EvaluacionDocenteEAMDS or java:jboss/datasources/EvaluacionDocenteEAMDS -->
+        <jta-data-source>java:/IndicadoresEamDS</jta-data-source>        
+                    <class>co.edu.eam.modelo.Evaluacion</class>
+                                <class>co.edu.eam.modelo.Periodo</class>
+                                <class>co.edu.eam.modelo.Pregunta</class>
+                                <class>co.edu.eam.modelo.Presentacion</class>
+                                <class>co.edu.eam.modelo.ProgramaAcademico</class>
+                                <class>co.edu.eam.modelo.Respuesta</class>
+                                <class>co.edu.eam.modelo.TipoEvaluacion</class>
+                            
+       
+        
+    </persistence-unit>
+</persistence>
