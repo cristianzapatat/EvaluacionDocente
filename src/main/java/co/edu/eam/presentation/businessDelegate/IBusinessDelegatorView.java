@@ -210,6 +210,5 @@ public interface IBusinessDelegatorView {
 
     public Long findTotalNumberTipoEvaluacion() throws Exception;
 
-    public List<TipoEvaluacionDTO> getDataTipoEvaluacion()
-        throws Exception;
+    public List<TipoEvaluacionDTO> getDataTipoEvaluacion()throws Exception;
 }
