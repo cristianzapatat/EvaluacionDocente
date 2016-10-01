@@ -37,6 +37,16 @@
                 <redirect />
             </navigation-case>
         </navigation-rule>
+        
+           <navigation-rule>
+            <from-view-id>/XHTML/initialMenu.xhtml</from-view-id>
+            <navigation-case>
+                <from-outcome>goEvaluacion</from-outcome>
+                <to-view-id>/XHTML/evaluacionAutoevaluacion.xhtml</to-view-id>
+                <redirect />
+            </navigation-case>
+        </navigation-rule>
+        
         <navigation-rule>
             <from-view-id>/XHTML/initialMenu.xhtml</from-view-id>
             <navigation-case>
@@ -53,6 +63,25 @@
                 <redirect />
             </navigation-case>
         </navigation-rule>
+        
+        <navigation-rule>
+            <from-view-id>/XHTML/initialMenu.xhtml</from-view-id>
+            <navigation-case>
+                <from-outcome>goInitialMenu</from-outcome>
+                <to-view-id>/XHTML/preguntaAutoevaluacion.xhtml</to-view-id>
+                <redirect />
+            </navigation-case>
+        </navigation-rule>
+        
+           <navigation-rule>
+            <from-view-id>/XHTML/initialMenu.xhtml</from-view-id>
+            <navigation-case>
+                <from-outcome>goInitialMenu</from-outcome>
+                <to-view-id>/XHTML/preguntaCoevaluacion.xhtml</to-view-id>
+                <redirect />
+            </navigation-case>
+        </navigation-rule>
+        
             <navigation-rule>
             <from-view-id>/XHTML/periodo.xhtml</from-view-id>
             <navigation-case>

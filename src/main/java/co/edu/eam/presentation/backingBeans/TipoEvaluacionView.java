@@ -24,10 +24,13 @@ import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.TimeZone;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 
 import javax.faces.application.FacesMessage;
@@ -59,6 +62,10 @@ public class TipoEvaluacionView implements Serializable {
     private TipoEvaluacionDTO selectedTipoEvaluacion;
     private TipoEvaluacion entity;
     private boolean showDialog;
+    private long idTipoEvaluacion;
+	private Map<String, Long> tipoEvaluacio;
+	private List<TipoEvaluacion> listaTipoEvaluaciones;
+	private List<TipoEvaluacion> listaEntidadTipoEvaluacion;
     @EJB
     private IBusinessDelegatorView businessDelegatorView;
 
@@ -66,6 +73,23 @@ public class TipoEvaluacionView implements Serializable {
         super();
     }
 
+    
+
+	@PostConstruct
+	public void init() throws Exception {
+		
+		listaTipoEvaluaciones = new ArrayList<TipoEvaluacion>();
+		tipoEvaluacio = new HashMap<String, Long>();
+		listaEntidadTipoEvaluacion = new ArrayList<TipoEvaluacion>();
+
+		listaTipoEvaluaciones = businessDelegatorView.getTipoEvaluacion();
+		for (int i = 0; i < listaTipoEvaluaciones.size(); i++) {
+			listaEntidadTipoEvaluacion.add((TipoEvaluacion) listaTipoEvaluaciones.get(i));
+		}
+		for (int i = 0; i < listaEntidadTipoEvaluacion.size(); i++) {
+			tipoEvaluacio.put(listaEntidadTipoEvaluacion.get(i).getNombre(), null);
+		}
+	}
     public void rowEventListener(RowEditEvent e) {
         try {
             TipoEvaluacionDTO tipoEvaluacionDTO = (TipoEvaluacionDTO) e.getObject();
@@ -388,4 +412,43 @@ public class TipoEvaluacionView implements Serializable {
     public void setShowDialog(boolean showDialog) {
         this.showDialog = showDialog;
     }
+
+
+
+	public long getIdTipoEvaluacion() {
+		return idTipoEvaluacion;
+	}
+
+
+
+	public void setIdTipoEvaluacion(long idTipoEvaluacion) {
+		this.idTipoEvaluacion = idTipoEvaluacion;
+	}
+
+
+
+	public Map<String, Long> getTipoEvaluacio() {
+		return tipoEvaluacio;
+	}
+
+
+
+	public void setTipoEvaluacio(Map<String, Long> tipoEvaluacio) {
+		this.tipoEvaluacio = tipoEvaluacio;
+	}
+
+
+
+
+
+	public List<TipoEvaluacion> getListaEntidadTipoEvaluacion() {
+		return listaEntidadTipoEvaluacion;
+	}
+
+
+
+	public void setListaEntidadTipoEvaluacion(List<TipoEvaluacion> listaEntidadTipoEvaluacion) {
+		this.listaEntidadTipoEvaluacion = listaEntidadTipoEvaluacion;
+	}
+    
 }

@@ -6,6 +6,8 @@ import co.edu.eam.modelo.TipoEvaluacion;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.awt.List;
+
 import javax.ejb.Stateless;
 
 import javax.persistence.EntityManager;
@@ -22,10 +24,14 @@ import javax.persistence.PersistenceContext;
  *
  * @see lidis.TipoEvaluacion
  */
+
 @Stateless
 public class TipoEvaluacionDAO extends JpaDaoImpl<TipoEvaluacion, Integer>
     implements ITipoEvaluacionDAO {
     private static final Logger log = LoggerFactory.getLogger(TipoEvaluacionDAO.class);
     @PersistenceContext
     private EntityManager entityManager;
-}
+    
+	
+    }
+

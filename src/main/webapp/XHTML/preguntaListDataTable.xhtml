@@ -4,125 +4,149 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<h:head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-	</h:head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</h:head>
 
-	<h:body>
-		  <ui:composition template="/WEB-INF/facelets/template.xhtml">	
-		 
-		 	<ui:define name="body">	
-				<f:view>
-					<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>               
-					<p:dialog modal="true" widgetVar="statusDialog" header="Loading"  draggable="false" closable="false">  
-   						<p:graphicImage value="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/images/ajaxloadingbar.gif" />   
-					</p:dialog>
-					<!-- Expired session -->
-					<p:idleMonitor onactive="PF('sessionTimeOutDialog').show();" timeout="#{session.maxInactiveInterval * 1000}" />
-					<p:dialog modal="true" widgetVar="sessionTimeOutDialog" header="Expired session"  draggable="false" closable="false">  
-	   					<h:outputText value="The session is finished" />
-	                 	<input id="confirmBackToLogin" 
-	                 		type="button" 
-	                 		value="Sign in"
-	                    	onclick="window.location='#{facesContext.externalContext.requestContextPath}/index.jsp';" />   
-					</p:dialog>
-		  			<h:form id="frm">								  		
-						
-						<p:panel id="panelDataTablePregunta" header="PreguntaData">
-							<p:growl id="men"/>				
-							<p:dataTable value="#{preguntaView.data}" var="pregunta"
-								paginator="true" rows="5">
-																										<p:column filterBy="#{pregunta.id}" sortBy="#{pregunta.id}" >
-										 <f:facet name="header">
-										<h:outputText value="id"/>
-										</f:facet>
-										 <h:outputText value="#{pregunta.id}"/>
-										 </p:column>
-			                    																									
-										<p:column filterBy="#{pregunta.estado}" sortBy="#{pregunta.estado}" >
-										 <f:facet name="header">
-										<h:outputText value="Estado"/>
-										</f:facet>
-										 <h:outputText value="#{pregunta.estado}"/>
-										</p:column>   
-			                    									
-										<p:column filterBy="#{pregunta.pregunta}" sortBy="#{pregunta.pregunta}" >
-										 <f:facet name="header">
-										<h:outputText value="Pregunta"/>
-										</f:facet>
-										 <h:outputText value="#{pregunta.pregunta}"/>
-										</p:column>   
-			                    									
-										<p:column filterBy="#{pregunta.id_Periodo}" sortBy="#{pregunta.id_Periodo}" >
-										 <f:facet name="header">
-										<h:outputText value="Id_Periodo"/>
-										</f:facet>
-										 <h:outputText value="#{pregunta.id_Periodo}"/>
-										</p:column>   
-			                    									
-										<p:column filterBy="#{pregunta.id_TipoEvaluacion}" sortBy="#{pregunta.id_TipoEvaluacion}" >
-										 <f:facet name="header">
-										<h:outputText value="Id_TipoEvaluacion"/>
-										</f:facet>
-										 <h:outputText value="#{pregunta.id_TipoEvaluacion}"/>
-										</p:column>   
-			                    			                    
-								<p:column headerText="Options">
-									<p:commandButton id="btnEdit" icon="ui-icon-pencil"
-										update=":dialogPregunta"
-										actionListener="#{preguntaView.action_edit}">
-										<f:attribute name="selectedPregunta" value="#{pregunta}" />
-									</p:commandButton>
-									<p:commandButton id="btnDelete"									
-										title="Delete" actionListener="#{preguntaView.action_delete_datatable}"
-										onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
-										icon="ui-icon-trash" update="@form">
-										<f:attribute name="selectedPregunta" value="#{pregunta}" />
-									</p:commandButton>
-								</p:column>									                    
-							</p:dataTable>	
+<h:body>
+	<ui:composition template="/WEB-INF/facelets/template.xhtml">
+
+		<ui:define name="body">
+			<f:view>
+				<p:ajaxStatus onstart="PF('statusDialog').show()"
+					onsuccess="PF('statusDialog').hide()" />
+				<p:dialog modal="true" widgetVar="statusDialog" header="Loading"
+					draggable="false" closable="false">
+					<p:graphicImage
+						value="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/images/ajaxloadingbar.gif" />
+				</p:dialog>
+				<!-- Expired session -->
+				<p:idleMonitor onactive="PF('sessionTimeOutDialog').show();"
+					timeout="#{session.maxInactiveInterval * 1000}" />
+				<p:dialog modal="true" widgetVar="sessionTimeOutDialog"
+					header="Expired session" draggable="false" closable="false">
+					<h:outputText value="The session is finished" />
+					<input id="confirmBackToLogin" type="button" value="Sign in"
+						onclick="window.location='#{facesContext.externalContext.requestContextPath}/index.jsp';" />
+				</p:dialog>
+				
+				<h:form id="frm">
+
+					<p:panel id="panelDataTablePregunta" header="PreguntaData">
+						<p:growl id="men" />
+						<p:dataTable value="#{preguntaView.data}" var="pregunta"
+							paginator="true" rows="5">
+							<p:column filterBy="#{pregunta.id}" sortBy="#{pregunta.id}">
+								<f:facet name="header">
+									<h:outputText value="id" />
+								</f:facet>
+								<h:outputText value="#{pregunta.id}" />
+							</p:column>
+
+							<p:column filterBy="#{pregunta.estado}"
+								sortBy="#{pregunta.estado}">
+								<f:facet name="header">
+									<h:outputText value="Estado" />
+								</f:facet>
+								<h:outputText value="#{pregunta.estado}" />
+							</p:column>
+
+							<p:column filterBy="#{pregunta.pregunta}"
+								sortBy="#{pregunta.pregunta}">
+								<f:facet name="header">
+									<h:outputText value="Pregunta" />
+								</f:facet>
+								<h:outputText value="#{pregunta.pregunta}" />
+							</p:column>
+
+							<p:column filterBy="#{pregunta.id_Periodo}"
+								sortBy="#{pregunta.id_Periodo}">
+								<f:facet name="header">
+									<h:outputText value="Id_Periodo" />
+								</f:facet>
+								<h:outputText value="#{pregunta.id_Periodo}" />
+							</p:column>
+
+							<p:column filterBy="#{pregunta.id_TipoEvaluacion}"
+								sortBy="#{pregunta.id_TipoEvaluacion}">
+								<f:facet name="header">
+									<h:outputText value="Id_TipoEvaluacion" />
+								</f:facet>
+								<h:outputText value="#{pregunta.id_TipoEvaluacion}" />
+							</p:column>
+
+							<p:column headerText="Options">
+								<p:commandButton id="btnEdit" icon="ui-icon-pencil"
+									update=":dialogPregunta"
+									actionListener="#{preguntaView.action_edit}">
+									<f:attribute name="selectedPregunta" value="#{pregunta}" />
+								</p:commandButton>
+								<p:commandButton id="btnDelete" title="Delete"
+									actionListener="#{preguntaView.action_delete_datatable}"
+									onclick="if(!confirm('Do you really want to delete this Entry?')){return false;}"
+									icon="ui-icon-trash" update="@form">
+									<f:attribute name="selectedPregunta" value="#{pregunta}" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+					
+					
+					<p:panel id="panelBoton">
+						<div align="center">
+							<p:commandButton id="btnNew" value="New"
+								action="#{preguntaView.action_new()}" update=":dialogPregunta" />
+						</div>
+					</p:panel>
+				</h:form>
+				<p:dialog id="dialogPregunta" appendTo="@(body)" draggable="true"
+					closable="false" visible="#{preguntaView.showDialog}"
+					resizable="false" modal="true" width="500">
+					<h:form id="formDialog">
+						<p:messages id="msg" />
+						<p:panel id="panelPregunta" header="Pregunta">
+							<h:panelGrid columns="2" id="panelGrid">
+							
+							
+							<h:outputText id="msgEstado" value=" Estado" />
+								<p:selectOneMenu id="estado" value="#{preguntaView.idEstado}">
+									<f:selectItems value="#{preguntaView.estado}" />
+								</p:selectOneMenu>
+
+								<h:outputText id="msgPregunta" value=" Pregunta" />
+								<p:inputText id="txtPregunta" disabled="false"
+									binding="#{preguntaView.txtPregunta}" />
+
+
+								<h:outputText id="msgId_Periodo" value="Periodo" />
+								<p:selectOneMenu id="periodo" value="#{preguntaView.idPeriodo}">
+									<f:selectItems value="#{preguntaView.periodo}" />
+								</p:selectOneMenu>
+								
+								
+								<h:outputText id="msgId_TipoEvaluacion" value=" TipoEvaluacion" />
+								<p:selectOneMenu id="tipoEvaluacionn"
+									value="#{preguntaView.idTipoEvaluacion}">
+									<f:selectItems value="#{preguntaView.tipoEvaluacio}" />
+								</p:selectOneMenu>
+
+							</h:panelGrid>
 						</p:panel>
-						<p:panel id="panelBoton">
+						<p:panel id="panelBotones">
 							<div align="center">
-								<p:commandButton id="btnNew" value="New"
-									action="#{preguntaView.action_new()}" update=":dialogPregunta" />
+								<p:commandButton id="btnSave" binding="#{preguntaView.btnSave}"
+									value="Save" action="#{preguntaView.action_save()}"
+									update=":dialogPregunta :frm:panelDataTablePregunta" />
+							
+								<p:commandButton id="btnExit" value="Exit"
+									action="#{preguntaView.action_closeDialog()}"
+									update=":dialogPregunta" />
 							</div>
-						</p:panel>						
-		   			</h:form>
-					<p:dialog id="dialogPregunta" appendTo="@(body)" draggable="true"
-						closable="false" visible="#{preguntaView.showDialog}" resizable="false"
-						modal="true" width="500">
-						<h:form id="formDialog">
-							<p:messages id="msg" />
-							<p:panel id="panelPregunta" header="Pregunta">							
-							    <h:panelGrid columns="2" id="panelGrid" >
-																		 <h:outputText id="msgId" value="Id"/>
-									 <p:inputText id="txtId" binding="#{preguntaView.txtId}">
-									 <p:ajax update=":dialogPregunta" listener="#{preguntaView.listener_txtId}"/>
-									 </p:inputText>	
-																											
-																		<h:outputText id="msgEstado" value=" Estado"/>
-									<p:inputText id="txtEstado" disabled="true" binding="#{preguntaView.txtEstado}"/>
-																		<h:outputText id="msgPregunta" value=" Pregunta"/>
-									<p:inputText id="txtPregunta" disabled="true" binding="#{preguntaView.txtPregunta}"/>
-																		<h:outputText id="msgId_Periodo" value=" Id_Periodo"/>
-									<p:inputText id="txtId_Periodo" disabled="true" binding="#{preguntaView.txtId_Periodo}"/>
-																		<h:outputText id="msgId_TipoEvaluacion" value=" Id_TipoEvaluacion"/>
-									<p:inputText id="txtId_TipoEvaluacion" disabled="true" binding="#{preguntaView.txtId_TipoEvaluacion}"/>
-																		
-																    </h:panelGrid>
-							</p:panel>						   
-							<p:panel id="panelBotones">
-								<div align="center">					
-									<p:commandButton id="btnSave" binding="#{preguntaView.btnSave}" value="Save" action="#{preguntaView.action_save()}" update=":dialogPregunta :frm:panelDataTablePregunta" />
-									<p:commandButton id="btnClear" value="Clear" action="#{preguntaView.action_clear()}" update=":dialogPregunta" />
-									<p:commandButton id="btnExit" value="Exit" action="#{preguntaView.action_closeDialog()}" update=":dialogPregunta" />
-								</div>
-							</p:panel>					
-						</h:form>
-					</p:dialog>
-				</f:view>
-			</ui:define>		
-		</ui:composition>	
-	</h:body>	
-</html>	
+						</p:panel>
+					</h:form>
+				</p:dialog>
+			</f:view>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

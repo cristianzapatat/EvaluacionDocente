@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.ejb.Local;
+import javax.ejb.Stateless;
 
 
 /**
@@ -17,5 +18,9 @@ import javax.ejb.Local;
 *
 */
 @Local
+@Stateless(name = "TipoEvaluacionDAO")
 public interface ITipoEvaluacionDAO extends Dao<TipoEvaluacion, Integer> {
+	
+	public List<TipoEvaluacion> findAll();
+
 }

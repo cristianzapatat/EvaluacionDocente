@@ -20,12 +20,16 @@
 							            
 							            	 								            	 <p:submenu label="Evaluacion">  
 								                    <p:menuitem value="Master Evaluacion" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/evaluacion.xhtml" />  
+								               	    <p:menuitem value="Master Evaluacion Autoevaluacion" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/evaluacionAutoevaluacion.xhtml" />  
+								               	  
 								               	 </p:submenu>
 											 								            	 <p:submenu label="Periodo">  
 								                    <p:menuitem value="Master Periodo" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/periodo.xhtml" />  
 								               	 </p:submenu>
 											 								            	 <p:submenu label="Pregunta">  
-								                    <p:menuitem value="Master Pregunta" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/pregunta.xhtml" />  
+								                    <p:menuitem value="Master Pregunta" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/pregunta.xhtml" />
+								                     <p:menuitem value="Master Pregunta Autoevaluacion" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/preguntaAutoevaluacion.xhtml" />  
+								               	  
 								               	 </p:submenu>
 											 								            	 <p:submenu label="Presentacion">  
 								                    <p:menuitem value="Master Presentacion" url="#{facesContext.externalContext.request.scheme}://#{facesContext.externalContext.request.serverName}:#{facesContext.externalContext.request.serverPort}#{facesContext.externalContext.request.contextPath}/XHTML/presentacion.xhtml" />  
