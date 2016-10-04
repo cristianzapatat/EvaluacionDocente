@@ -294,7 +294,7 @@ public class EvaluacionView implements Serializable {
 		try {
 			entity = new Evaluacion();
 			Integer id = generarID();
-			Integer tipo = 2;
+		    	Integer tipo = 2;
 			entity.setId(id);
 			entity.setNombre(FacesUtils.checkString(txtNombre));
 			entity.setPeriodo(((idPeriodo) != null) ? businessDelegatorView.getPeriodo((idPeriodo)) : null);

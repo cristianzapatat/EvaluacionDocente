@@ -91,9 +91,9 @@ public class PreguntaView implements Serializable {
 		estado = new HashMap<String, Integer>();
 		estado.put("ACTIVO", (int) 0);
 		estado.put("INACTIVO", (int) 1);
-
+  
 		listaTipoEvaluaciones = new ArrayList<TipoEvaluacion>();
-		tipoEvaluacio = new HashMap<String, Integer>();
+		 tipoEvaluacio = new HashMap<String, Integer>();
 		listaEntidadTipoEvaluacion = new ArrayList<TipoEvaluacion>();
 
 		listaTipoEvaluaciones = businessDelegatorView.getTipoEvaluacion();
