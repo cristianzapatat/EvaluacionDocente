@@ -1,0 +1,102 @@
+
+
+*{
+	font-family: Arial;
+}
+
+
+body{
+	background: #fbfbfb !important;
+}
+
+.titulo{
+	font-size: 24px;
+	font-weight: bold;
+    color: #615b5b;
+}
+
+#navegacion-principal{
+	    position: fixed !important;
+    z-index: 99999999999 !important;
+}
+
+.subtitulo{
+	font-size: 20px;
+	font-weight: 300; 
+    color: #615b5b;
+}
+
+.texto-normal{
+	font-size: 14px;
+    color: #615b5b;
+}
+
+img.logo{
+	content:url("../images/logo.svg");
+	height: 88%;
+    width: 100%;
+    margin-top:4px;
+}
+
+.contenedor-logo{
+	width: 40px;
+	height: 100%;
+	    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+}
+
+
+.nombre-usuario{
+    border-left: 1px solid #0a4094;
+
+}
+
+.navegacion{
+    background-color: #0D47A1;
+}
+
+.brand-logo{
+
+    height: 100%;
+}
+
+.boton{
+    background-color: #1565C0 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    text-transform: none !important;
+}
+
+
+.caja-texto, .textarea{
+    border: 1px solid #ccc   !important;
+    width: 80%  !important;
+    border-radius: 7px  !important;
+    padding-left: 8px  !important;
+    outline: none;
+    color: #4c4c4c !important;
+    height: 37px !important;
+}
+
+.boton-modal{
+    font-size: 14px !important;
+}
+
+.contenedor-tabla{
+    width: 60%;
+    margin:auto;
+}
+
+
+#container{
+	width: 100% !important;
+    margin-top: 0 !important;
+}
+
+#formDialog{
+	    width: 60% !important;
+    margin: auto !important;
+    margin-top: 7% !important;
+}
