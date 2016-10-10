@@ -31,10 +31,11 @@
 				<h:form id="formDialog">
 					<p:messages id="msg" />
 					<p:growl id="men" />
-					<p:panel class="titulo" id="panelRespuesta" header="Respuesta">
+					<p:panel id="panelRespuesta" header="Respuesta">
 						<h:panelGrid columns="2" id="panelGrid">
+
 							<p:dataTable var="pregunta"
-								value="#{preguntaView.dataCoevaluacion}" paginator="true"
+								value="#{preguntaView.dataAutoevaluacion}" paginator="true"
 								paginatorPosition="bottom" rows="5">
 								<p:column style="width:100px; text-align: center;"
 									class="subtitulo" headerText="Código">
@@ -60,7 +61,7 @@
 											noSelectionOption="true" />
 										<f:selectItem itemLabel="Plenamente" itemValue="5"
 											noSelectionOption="true" />
-										<p:ajax listener="#{respuestaView.find_Entity}" update="" />
+										<p:ajax listener="#{respuestaView.find_EntityAutoevaluacion}" update="" />
 									</p:selectOneMenu>
 								</p:column>
 
