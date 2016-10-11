@@ -56,4 +56,12 @@ public interface IPreguntaLogic {
     public Long findTotalNumberPregunta() throws Exception;
 
     public List<PreguntaDTO> getDataPregunta() throws Exception;
+	
+	/**
+     * Obtiene las preguntas de la base de datos para enviarlas a BusinessDelgator
+     * @param whereCondition condicion que servira para listar las preguntas que se encuentren en la base de datos
+     * @return una lista con todas las preguntas que se mostraran posteriormente en la vista
+     * @throws Exception
+     */
+    public List<PreguntaDTO> getDataPregunta(String whereCondition ) throws Exception;
 }

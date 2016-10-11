@@ -56,4 +56,12 @@ public interface IRespuestaLogic {
     public Long findTotalNumberRespuesta() throws Exception;
 
     public List<RespuestaDTO> getDataRespuesta() throws Exception;
+	
+	/**
+     * Obtiene las respuestas de la base de datos para enviarlas a BusinessDelgator
+     * @param whereCondition condicion que servira para listar las respuestas que se encuentren en la base de datos
+     * @return una lista con todas las respuestas que se modificaran posteriormente en la base de datos
+     * @throws Exception
+     */
+    public List<RespuestaDTO> getDataRespuesta(String whereCondition ) throws Exception;
 }

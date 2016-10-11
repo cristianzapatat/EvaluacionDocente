@@ -205,6 +205,38 @@ public class RespuestaLogic implements IRespuestaLogic {
         }
     }
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * co.edu.eam.modelo.control.IRespuestaLogic#getDataRespuesta(java.lang.
+	 * String)
+	 */
+	@TransactionAttribute
+	public List<RespuestaDTO> getDataRespuesta(String whereCondition) throws Exception {
+		try {
+			List<Respuesta> respuesta = respuestaDAO.findByCriteria(whereCondition);
+
+			List<RespuestaDTO> respuestaDTO = new ArrayList<RespuestaDTO>();
+
+			for (Respuesta respuestaTmp : respuesta) {
+				RespuestaDTO respuestaDTO2 = new RespuestaDTO();
+
+				respuestaDTO2.setId(respuestaTmp.getId());
+				respuestaDTO2.setNota((respuestaTmp.getNota() != null) ? respuestaTmp.getNota() : null);
+				respuestaDTO2.setId_Pregunta(
+						(respuestaTmp.getPregunta().getId() != null) ? respuestaTmp.getPregunta().getId() : null);
+				respuestaDTO2.setId_Presentacion((respuestaTmp.getPresentacion().getId() != null)
+						? respuestaTmp.getPresentacion().getId() : null);
+				respuestaDTO.add(respuestaDTO2);
+			}
+
+			return respuestaDTO;
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
     @TransactionAttribute
     public Respuesta getRespuesta(Integer id) throws Exception {
         log.debug("getting Respuesta instance");

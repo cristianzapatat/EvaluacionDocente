@@ -253,6 +253,39 @@ public class PreguntaLogic implements IPreguntaLogic {
         }
     }
 
+	/*
+     * (non-Javadoc)
+     * @see co.edu.eam.modelo.control.IPreguntaLogic#getDataPregunta(java.lang.String)
+     */
+    @TransactionAttribute
+    public List<PreguntaDTO> getDataPregunta(String whereCondition) throws Exception {
+        try {
+            List<Pregunta> pregunta = preguntaDAO.findByCriteria(whereCondition);
+
+            List<PreguntaDTO> preguntaDTO = new ArrayList<PreguntaDTO>();
+
+            for (Pregunta preguntaTmp : pregunta) {
+                PreguntaDTO preguntaDTO2 = new PreguntaDTO();
+
+                preguntaDTO2.setId(preguntaTmp.getId());
+                preguntaDTO2.setEstado((preguntaTmp.getEstado() != null)
+                    ? preguntaTmp.getEstado() : null);
+                preguntaDTO2.setPregunta((preguntaTmp.getPregunta() != null)
+                    ? preguntaTmp.getPregunta() : null);
+                preguntaDTO2.setId_Periodo((preguntaTmp.getPeriodo().getId() != null)
+                    ? preguntaTmp.getPeriodo().getId() : null);
+                preguntaDTO2.setId_TipoEvaluacion((preguntaTmp.getTipoEvaluacion()
+                                                              .getId() != null)
+                    ? preguntaTmp.getTipoEvaluacion().getId() : null);
+                preguntaDTO.add(preguntaDTO2);
+            }
+
+            return preguntaDTO;
+        } catch (Exception e) {
+            throw e;
+        }
+    }
+	
     @TransactionAttribute
     public Pregunta getPregunta(Integer id) throws Exception {
         log.debug("getting Pregunta instance");

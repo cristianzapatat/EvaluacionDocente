@@ -211,4 +211,19 @@ public interface IBusinessDelegatorView {
     public Long findTotalNumberTipoEvaluacion() throws Exception;
 
     public List<TipoEvaluacionDTO> getDataTipoEvaluacion()throws Exception;
+	
+	/**
+     * Obtiene las preguntas de la base de datos para mostrarlas en la vista de respuestas
+     * @param whereCondition condicion que servira para listar las preguntas que se encuentren en la base de datos
+     * @return una lista con todas las preguntas que se mostraran posteriormente en la vista
+     * @throws Exception
+     */
+    public List<PreguntaDTO> getDataPregunta(String whereCondition) throws Exception;
+    /**
+     * Obtiene la respuesta de la base de datos segun la condición que sea recepcionada a este metodo
+     * @param whereCondition condicion que permitira la obtencion de la respuesta de la base de datos
+     * @return una lista con las respuestas encontradas
+     * @throws Exception
+     */
+    public List<RespuestaDTO> getDataRespuesta(String whereCondition) throws Exception;
 }

@@ -467,4 +467,27 @@ public class BusinessDelegatorView implements IBusinessDelegatorView {
         throws Exception {
         return tipoEvaluacionLogic.getDataTipoEvaluacion();
     }
+	
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see co.edu.eam.presentation.businessDelegate.IBusinessDelegatorView#
+	 * getDataPregunta(java.lang.String)
+	 */
+
+	public List<PreguntaDTO> getDataPregunta(String whereCondition) throws Exception {
+
+		return preguntaLogic.getDataPregunta(whereCondition);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see co.edu.eam.presentation.businessDelegate.IBusinessDelegatorView#
+	 * getDataRespuesta(java.lang.String)
+	 */
+	public List<RespuestaDTO> getDataRespuesta(String whereCondition) throws Exception {
+
+		return respuestaLogic.getDataRespuesta(whereCondition);
+	}
 }

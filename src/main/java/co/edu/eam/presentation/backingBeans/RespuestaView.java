@@ -24,6 +24,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 import java.util.TimeZone;
@@ -61,6 +62,11 @@ public class RespuestaView implements Serializable {
     private RespuestaDTO selectedRespuesta;
     private Respuesta entity;
     private boolean showDialog;
+    
+ // nota refiere al tipo de calificacion de una pregunta
+ 	private Integer nota;
+ 	
+ 	
     @EJB
     private IBusinessDelegatorView businessDelegatorView;
 
@@ -147,6 +153,135 @@ public class RespuestaView implements Serializable {
         return "";
     }
 
+	
+	/**
+	 * Este método se encarga de llamar al metodo que buscara la respuesta a
+	 * modificar su nota, y ademas procede a realizar el update en la base de
+	 * datos
+	 */
+	public void find_Entity() {
+		try {
+			Integer id = FacesUtils.checkInteger(txtId_Pregunta);
+			List<RespuestaDTO> info = new LinkedList<>();
+			info = getDataRespuestaCoevaluacion(id);
+			data = null;
+			entity = new Respuesta();
+			if (!info.isEmpty()) {
+				// action_modify();
+				entity.setId(info.get(0).getId());
+				entity.setPregunta((info.get(0).getId_Pregunta() != null)
+						? businessDelegatorView.getPregunta(info.get(0).getId_Pregunta()) : null);
+				entity.setPresentacion((info.get(0).getId_Presentacion() != null)
+						? businessDelegatorView.getPresentacion(info.get(0).getId_Presentacion()) : null);
+				entity.setNota(nota);
+				businessDelegatorView.updateRespuesta(entity);
+
+			}
+		} catch (Exception e) {
+			entity = null;
+			e.printStackTrace();
+		}
+	}
+	
+	public void find_Entity_Evaluacion() {
+		try {
+			Integer id = FacesUtils.checkInteger(txtId_Pregunta);
+			List<RespuestaDTO> info = new LinkedList<>();
+			info = getDataRespuestaEvaluacion(id);
+			data=null;
+			entity = new Respuesta();
+			if (!info.isEmpty()) {
+				//action_modify();
+				entity.setId(info.get(0).getId());
+				entity.setPregunta((info.get(0).getId_Pregunta() != null)
+						? businessDelegatorView.getPregunta(info.get(0).getId_Pregunta()) : null);
+				entity.setPresentacion((info.get(0).getId_Presentacion() != null)
+						? businessDelegatorView.getPresentacion(info.get(0).getId_Presentacion()) : null);
+				entity.setNota(nota);
+				businessDelegatorView.updateRespuesta(entity);
+				
+			}			
+		} catch (Exception e) {
+			entity = null;
+			e.printStackTrace();
+		}
+	}
+	
+	public void find_EntityAutoevaluacion() {
+		try {
+			Integer id = FacesUtils.checkInteger(txtId_Pregunta);
+			List<RespuestaDTO> info = new LinkedList<>();
+			info = getDataRespuestaAutoevaluacion(id);
+			data=null;
+			entity = new Respuesta();
+			if (!info.isEmpty()) {
+				//action_modify();
+				entity.setId(info.get(0).getId());
+				entity.setPregunta((info.get(0).getId_Pregunta() != null)
+						? businessDelegatorView.getPregunta(info.get(0).getId_Pregunta()) : null);
+				entity.setPresentacion((info.get(0).getId_Presentacion() != null)
+						? businessDelegatorView.getPresentacion(info.get(0).getId_Presentacion()) : null);
+				entity.setNota(nota);
+				businessDelegatorView.updateRespuesta(entity);
+				
+			}			
+		} catch (Exception e) {
+			entity = null;
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Metodo que traera la informacion del objeto Respuesta, segun el id de la
+	 * pregunta y el id de la presentación que en ese momento se este dando
+	 * 
+	 * @param idPregunta, identificador de la pregunta
+	 * @return una lista con el objeto que se va a modificar
+	 */
+	public List<RespuestaDTO> getDataRespuestaCoevaluacion(Integer idPregunta) {
+		try {
+
+			if (data == null) {
+
+				String whereCondition = "model.presentacion.id = 1 and model.pregunta.id = " + idPregunta;
+				data = businessDelegatorView.getDataRespuesta(whereCondition);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return data;
+	}
+	
+	public List<RespuestaDTO> getDataRespuestaEvaluacion(Integer idPregunta) {
+		try {
+			
+			if (data == null) {
+				
+				String whereCondition = "model.presentacion.id = 1 and model.pregunta.id = " + idPregunta;
+				data = businessDelegatorView.getDataRespuesta(whereCondition);
+							}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return data;
+	}
+	
+	public List<RespuestaDTO> getDataRespuestaAutoevaluacion(Integer idPregunta) {
+		try {
+			
+			if (data == null) {
+				
+				String whereCondition = "model.presentacion.id = 1 and model.pregunta.id = " + idPregunta;
+				data = businessDelegatorView.getDataRespuesta(whereCondition);
+							}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return data;
+	}
     public void listener_txtId() {
         try {
             Integer id = FacesUtils.checkInteger(txtId);
@@ -448,4 +583,12 @@ public class RespuestaView implements Serializable {
     public void setShowDialog(boolean showDialog) {
         this.showDialog = showDialog;
     }
+    
+    public Integer getNota() {
+		return nota;
+	}
+
+	public void setNota(Integer nota) {
+		this.nota = nota;
+	}
 }

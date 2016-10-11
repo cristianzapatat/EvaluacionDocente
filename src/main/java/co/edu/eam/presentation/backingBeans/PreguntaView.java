@@ -498,6 +498,52 @@ public class PreguntaView implements Serializable {
 
 		return data;
 	}
+	
+	/**
+	 * Muestra en la vista las preguntas segun tipo de evaluacion Coevaluacion
+	 * además si la pregunta se encuentra activa
+	 * 
+	 * @return la lista con las preguntas que se en encuentre en la base de
+	 *         datos con la realizacion de la consulta SQL
+	 */
+	public List<PreguntaDTO> getDataCoevaluacion() {
+		try {
+			if (data == null) {
+				String whereCondition = "model.tipoEvaluacion.id = 3 and model.estado = '1'";
+				data = businessDelegatorView.getDataPregunta(whereCondition);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return data;
+	}
+	
+	public List<PreguntaDTO> getDataAutoevaluacion(){
+	   	 try {
+	            if (data == null) {
+	           	 String whereCondition = "model.tipoEvaluacion.id = 2 and model.estado = '1'";
+	                data = businessDelegatorView.getDataPregunta(whereCondition);
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        return data;
+	   }
+
+	public List<PreguntaDTO> getDataEvaluacion(){
+	   	 try {
+	            if (data == null) {
+	           	 String whereCondition = "model.tipoEvaluacion.id = 1 and model.estado = '1'";
+	                data = businessDelegatorView.getDataPregunta(whereCondition);
+	            }
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+
+	        return data;
+	   }
 
 	public InputText getTxtEstado() {
 		return txtEstado;
