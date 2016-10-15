@@ -415,7 +415,7 @@ public class PreguntaView implements Serializable {
 	 * 
 	 * @author Daniel Giraldo <br>
 	 *         Email: <pipe_635@hotmail.com> <br>
-	 *         ${date}
+	 *         13/10/2016
 	 * @return
 	 * 
 	 */
@@ -520,7 +520,7 @@ public class PreguntaView implements Serializable {
 	 *         Email: jjmb2789@gmail.com <br/>
 	 * @author EAM <br/>
 	 *         Alvaro Javier Lotero <br/>
-	 *         Email: <br/>
+	 *         Email: Lotero021095@gmail.com <br/>
 	 * @author EAM <br/>
 	 *         Santiago Idarraga <br/>
 	 *         <br/>
