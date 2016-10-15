@@ -557,6 +557,7 @@ public class PreguntaView implements Serializable {
 	public void setTxtPregunta(InputText txtPregunta) {
 		this.txtPregunta = txtPregunta;
 	}
+	
 
 	public InputText getTxtId_Periodo() {
 		return txtId_Periodo;
