@@ -481,7 +481,7 @@ public class PreguntaView implements Serializable {
 	 * 
 	 * @author Daniel Giraldo <br>
 	 *         Email: <pipe_635@hotmail.com> <br>
-	 *         ${date}
+	 *         14/10/2016
 	 * @return Lista con los datos de las pregunts que se quieren listar
 	 * 
 	 */
@@ -524,7 +524,7 @@ public class PreguntaView implements Serializable {
 	 * @author EAM <br/>
 	 *         Santiago Idarraga <br/>
 	 *         <br/>
-	 *         13/10/2016
+	 *         13/10/2016 
 	 * @version 1.0
 	 * @return la lista con las preguntas que se en encuentre en la base de
 	 *         datos con la realizacion de la consulta SQL
