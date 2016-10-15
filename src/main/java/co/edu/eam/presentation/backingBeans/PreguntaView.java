@@ -520,7 +520,7 @@ public class PreguntaView implements Serializable {
 	 *         Email: jjmb2789@gmail.com <br/>
 	 * @author EAM <br/>
 	 *         Alvaro Javier Lotero <br/>
-	 *         Email: Lotero021095@gmail.com <br/>
+	 *         Email: Lotero021095@gmail.com<br/>
 	 * @author EAM <br/>
 	 *         Santiago Idarraga <br/>
 	 *         <br/>
