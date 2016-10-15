@@ -33,8 +33,12 @@
 					<p:growl id="men" />
 					<p:panel class="titulo" id="panelRespuesta" header="Respuesta">
 						<h:panelGrid columns="2" id="panelGrid">
+						
+						<p:inputText type="hidden" id="tipoEvaluacion" value="3"
+                                        binding="#{preguntaView.txtTipoEvaluacion}" />
+                                        
 							<p:dataTable var="pregunta"
-								value="#{preguntaView.dataCoevaluacion}" paginator="true"
+								value="#{preguntaView.dataPregunta}" paginator="true"
 								paginatorPosition="bottom" rows="5">
 								<p:column style="width:100px; text-align: center;"
 									class="subtitulo" headerText="Código">
@@ -52,7 +56,7 @@
 									headerText="Respuesta">
 									<p:selectOneMenu class="selects" id="respuesta"
 										value="#{respuestaView.nota}" style="width:150px">
-										<f:selectItem itemLabel="Seleccione una Opción" itemValue="-1"
+										<f:selectItem itemLabel="Seleccione una Opción" itemValue="0"
 											noSelectionOption="true" />
 										<f:selectItem itemLabel="No se Cumple" itemValue="1"
 											noSelectionOption="true" />

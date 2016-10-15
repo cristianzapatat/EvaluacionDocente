@@ -213,8 +213,9 @@ public class RespuestaLogic implements IRespuestaLogic {
 	 * String)
 	 */
 	@TransactionAttribute
-	public List<RespuestaDTO> getDataRespuesta(String whereCondition) throws Exception {
+	public List<RespuestaDTO> getDataRespuesta(Integer idPregunta, Integer idPresentacion) throws Exception {
 		try {
+			String whereCondition = "model.presentacion.id ="+idPresentacion+" and model.pregunta.id = " + idPregunta;
 			List<Respuesta> respuesta = respuestaDAO.findByCriteria(whereCondition);
 
 			List<RespuestaDTO> respuestaDTO = new ArrayList<RespuestaDTO>();
