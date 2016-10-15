@@ -45,19 +45,23 @@ import javax.faces.event.ActionEvent;
 import javax.persistence.Convert;
 
 /**
- * @author Zathura Code Generator http://zathuracode.org www.zathuracode.org
- *
+ * 
+ * @author Jefry Londoño <jjmb2789@gmail.com>
+ * @date
+ * @version
  */
 @ManagedBean
 @ViewScoped
 public class PreguntaView implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private static final Logger log = LoggerFactory.getLogger(PreguntaView.class);
+	public final static int ESTADO_PREGUNTA = 1;
 	private InputText txtEstado;
 	private InputText txtPregunta;
 	private InputText txtId_Periodo;
 	private InputText txtId_TipoEvaluacion;
 	private InputText txtId = new InputText();
+	private InputText txtTipoEvaluacion;
 	private CommandButton btnSave;
 	private CommandButton btnModify;
 	private CommandButton btnDelete;
@@ -91,9 +95,9 @@ public class PreguntaView implements Serializable {
 		estado = new HashMap<String, Integer>();
 		estado.put("ACTIVO", (int) 0);
 		estado.put("INACTIVO", (int) 1);
-  
+
 		listaTipoEvaluaciones = new ArrayList<TipoEvaluacion>();
-		 tipoEvaluacio = new HashMap<String, Integer>();
+		tipoEvaluacio = new HashMap<String, Integer>();
 		listaEntidadTipoEvaluacion = new ArrayList<TipoEvaluacion>();
 
 		listaTipoEvaluaciones = businessDelegatorView.getTipoEvaluacion();
@@ -241,14 +245,14 @@ public class PreguntaView implements Serializable {
 	/**
 	 * <b>
 	 * <p>
-	 * Este Metodo  se encarga de Generar un id aleatorio <br>
-	 *  que se va utilizar al moment de guardar la evaluacione<br>
+	 * Este Metodo se encarga de Generar un id aleatorio <br>
+	 * que se va utilizar al moment de guardar la evaluacione<br>
 	 * </p>
 	 * </b>
 	 * 
 	 * @author Daniel Giraldo <br>
 	 *         Email: <pipe_635@hotmail.com> <br>
-	 *         ${date}
+	 *         13/10/2016
 	 * @return Cadena vacia
 	 * 
 	 */
@@ -411,7 +415,7 @@ public class PreguntaView implements Serializable {
 	 * 
 	 * @author Daniel Giraldo <br>
 	 *         Email: <pipe_635@hotmail.com> <br>
-	 *         ${date}
+	 *         13/10/2016
 	 * @return
 	 * 
 	 */
@@ -477,7 +481,7 @@ public class PreguntaView implements Serializable {
 	 * 
 	 * @author Daniel Giraldo <br>
 	 *         Email: <pipe_635@hotmail.com> <br>
-	 *         ${date}
+	 *         14/10/2016
 	 * @return Lista con los datos de las pregunts que se quieren listar
 	 * 
 	 */
@@ -498,19 +502,38 @@ public class PreguntaView implements Serializable {
 
 		return data;
 	}
-	
+
 	/**
-	 * Muestra en la vista las preguntas segun tipo de evaluacion Coevaluacion
-	 * además si la pregunta se encuentra activa
 	 * 
+	 * <p>
+	 * <b>Muestra en la vista las preguntas segun tipo de evaluacion
+	 * Coevaluacion además si la pregunta se encuentra activa</b>
+	 * </p>
+	 * <br/>
+	 * <ul>
+	 * <li></li>
+	 * </ul>
+	 * <br/>
+	 * 
+	 * @author EAM <br/>
+	 *         Jefry Londoño Acosta <br/>
+	 *         Email: jjmb2789@gmail.com <br/>
+	 * @author EAM <br/>
+	 *         Alvaro Javier Lotero <br/>
+	 *         Email: Lotero021095@gmail.com<br/>
+	 * @author EAM <br/>
+	 *         Santiago Idarraga <br/>
+	 *         <br/>
+	 *         13/10/2016 
+	 * @version 1.0
 	 * @return la lista con las preguntas que se en encuentre en la base de
 	 *         datos con la realizacion de la consulta SQL
 	 */
-	public List<PreguntaDTO> getDataCoevaluacion() {
+	public List<PreguntaDTO> getDataPregunta() {
 		try {
 			if (data == null) {
-				String whereCondition = "model.tipoEvaluacion.id = 3 and model.estado = '1'";
-				data = businessDelegatorView.getDataPregunta(whereCondition);
+				int tipoEvaluacion = FacesUtils.checkInteger(txtTipoEvaluacion);
+				data = businessDelegatorView.getDataPregunta(tipoEvaluacion, ESTADO_PREGUNTA);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -518,32 +541,6 @@ public class PreguntaView implements Serializable {
 
 		return data;
 	}
-	
-	public List<PreguntaDTO> getDataAutoevaluacion(){
-	   	 try {
-	            if (data == null) {
-	           	 String whereCondition = "model.tipoEvaluacion.id = 2 and model.estado = '1'";
-	                data = businessDelegatorView.getDataPregunta(whereCondition);
-	            }
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-
-	        return data;
-	   }
-
-	public List<PreguntaDTO> getDataEvaluacion(){
-	   	 try {
-	            if (data == null) {
-	           	 String whereCondition = "model.tipoEvaluacion.id = 1 and model.estado = '1'";
-	                data = businessDelegatorView.getDataPregunta(whereCondition);
-	            }
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        }
-
-	        return data;
-	   }
 
 	public InputText getTxtEstado() {
 		return txtEstado;
@@ -560,6 +557,7 @@ public class PreguntaView implements Serializable {
 	public void setTxtPregunta(InputText txtPregunta) {
 		this.txtPregunta = txtPregunta;
 	}
+	
 
 	public InputText getTxtId_Periodo() {
 		return txtId_Periodo;
@@ -731,6 +729,21 @@ public class PreguntaView implements Serializable {
 
 	public void setListaEntidadTipoEvaluacion(List<TipoEvaluacion> listaEntidadTipoEvaluacion) {
 		this.listaEntidadTipoEvaluacion = listaEntidadTipoEvaluacion;
+	}
+
+	/**
+	 * @return the txtTipoEvaluacion
+	 */
+	public InputText getTxtTipoEvaluacion() {
+		return txtTipoEvaluacion;
+	}
+
+	/**
+	 * @param txtTipoEvaluacion
+	 *            the txtTipoEvaluacion to set
+	 */
+	public void setTxtTipoEvaluacion(InputText txtTipoEvaluacion) {
+		this.txtTipoEvaluacion = txtTipoEvaluacion;
 	}
 
 }

@@ -258,8 +258,10 @@ public class PreguntaLogic implements IPreguntaLogic {
      * @see co.edu.eam.modelo.control.IPreguntaLogic#getDataPregunta(java.lang.String)
      */
     @TransactionAttribute
-    public List<PreguntaDTO> getDataPregunta(String whereCondition) throws Exception {
+    public List<PreguntaDTO> getDataPregunta(int tipoEvaluacion, int estado) throws Exception {
         try {
+        	
+        	String whereCondition = "model.tipoEvaluacion.id = "+tipoEvaluacion +" and model.estado = '"+estado+"'";
             List<Pregunta> pregunta = preguntaDAO.findByCriteria(whereCondition);
 
             List<PreguntaDTO> preguntaDTO = new ArrayList<PreguntaDTO>();
