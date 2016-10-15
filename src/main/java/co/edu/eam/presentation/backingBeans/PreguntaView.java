@@ -248,7 +248,7 @@ public class PreguntaView implements Serializable {
 	 * 
 	 * @author Daniel Giraldo <br>
 	 *         Email: <pipe_635@hotmail.com> <br>
-	 *         ${date}
+	 *         14/10/2016
 	 * @return Cadena vacia
 	 * 
 	 */
