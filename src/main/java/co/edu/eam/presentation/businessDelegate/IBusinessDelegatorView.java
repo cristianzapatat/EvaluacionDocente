@@ -38,8 +38,10 @@ import java.util.Set;
 import javax.ejb.Local;
 
 /**
- * @author Zathura Code Generator http://zathuracode.org www.zathuracode.org
- *
+ * 
+ * @author Jefry Londoño <jjmb2789@gmail.com>
+ * @17/10/2016
+ * @version
  */
 @Local
 public interface IBusinessDelegatorView {

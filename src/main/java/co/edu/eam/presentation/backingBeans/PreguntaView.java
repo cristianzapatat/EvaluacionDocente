@@ -47,7 +47,7 @@ import javax.persistence.Convert;
 /**
  * 
  * @author Jefry Londoño <jjmb2789@gmail.com>
- * @date
+ * @17/10/2016
  * @version
  */
 @ManagedBean
@@ -118,55 +118,55 @@ public class PreguntaView implements Serializable {
 
 	}
 
-	public void rowEventListener(RowEditEvent e) {
-		try {
-			PreguntaDTO preguntaDTO = (PreguntaDTO) e.getObject();
-
-			if (txtEstado == null) {
-				txtEstado = new InputText();
-			}
-
-			txtEstado.setValue(preguntaDTO.getEstado());
-
-			if (txtPregunta == null) {
-				txtPregunta = new InputText();
-			}
-
-			txtPregunta.setValue(preguntaDTO.getPregunta());
-
-			if (txtId_Periodo == null) {
-				txtId_Periodo = new InputText();
-			}
-
-			txtId_Periodo.setValue(preguntaDTO.getId_Periodo());
-
-			if (txtId_TipoEvaluacion == null) {
-				txtId_TipoEvaluacion = new InputText();
-			}
-
-			txtId_TipoEvaluacion.setValue(preguntaDTO.getId_TipoEvaluacion());
-
-			if (txtId == null) {
-				txtId = new InputText();
-			}
-
-			txtId.setValue(preguntaDTO.getId());
-
-			Integer id = FacesUtils.checkInteger(txtId);
-			entity = businessDelegatorView.getPregunta(id);
-
-			action_modify();
-		} catch (Exception ex) {
-		}
-	}
-
-	public String action_new() {
-		action_clear();
-		selectedPregunta = null;
-		setShowDialog(true);
-
-		return "";
-	}
+//	public void rowEventListener(RowEditEvent e) {
+//		try {
+//			PreguntaDTO preguntaDTO = (PreguntaDTO) e.getObject();
+//
+//			if (txtEstado == null) {
+//				txtEstado = new InputText();
+//			}
+//
+//			txtEstado.setValue(preguntaDTO.getEstado());
+//
+//			if (txtPregunta == null) {
+//				txtPregunta = new InputText();
+//			}
+//
+//			txtPregunta.setValue(preguntaDTO.getPregunta());
+//
+//			if (txtId_Periodo == null) {
+//				txtId_Periodo = new InputText();
+//			}
+//
+//			txtId_Periodo.setValue(preguntaDTO.getId_Periodo());
+//
+//			if (txtId_TipoEvaluacion == null) {
+//				txtId_TipoEvaluacion = new InputText();
+//			}
+//
+//			txtId_TipoEvaluacion.setValue(preguntaDTO.getId_TipoEvaluacion());
+//
+//			if (txtId == null) {
+//				txtId = new InputText();
+//			}
+//
+//			txtId.setValue(preguntaDTO.getId());
+//
+//			Integer id = FacesUtils.checkInteger(txtId);
+//			entity = businessDelegatorView.getPregunta(id);
+//
+//			action_modify();
+//		} catch (Exception ex) {
+//		}
+//	}
+//
+//	public String action_new() {
+//		action_clear();
+//		selectedPregunta = null;
+//		setShowDialog(true);
+//
+//		return "";
+//	}
 
 	public String action_clear() {
 		entity = null;
@@ -208,39 +208,39 @@ public class PreguntaView implements Serializable {
 		return "";
 	}
 
-	public void listener_txtId() {
-		try {
-			Integer id = FacesUtils.checkInteger(txtId);
-			entity = (id != null) ? businessDelegatorView.getPregunta(id) : null;
-		} catch (Exception e) {
-			entity = null;
-		}
-
-		if (entity == null) {
-			txtEstado.setDisabled(false);
-			txtPregunta.setDisabled(false);
-			txtId_Periodo.setDisabled(false);
-			txtId_TipoEvaluacion.setDisabled(false);
-			txtId.setDisabled(false);
-			btnSave.setDisabled(false);
-		} else {
-			txtEstado.setValue(entity.getEstado());
-			txtEstado.setDisabled(false);
-			txtPregunta.setValue(entity.getPregunta());
-			txtPregunta.setDisabled(false);
-			txtId_Periodo.setValue(entity.getPeriodo().getId());
-			txtId_Periodo.setDisabled(false);
-			txtId_TipoEvaluacion.setValue(entity.getTipoEvaluacion().getId());
-			txtId_TipoEvaluacion.setDisabled(false);
-			txtId.setValue(entity.getId());
-			txtId.setDisabled(true);
-			btnSave.setDisabled(false);
-
-			if (btnDelete != null) {
-				btnDelete.setDisabled(false);
-			}
-		}
-	}
+//	public void listener_txtId() {
+//		try {
+//			Integer id = FacesUtils.checkInteger(txtId);
+//			entity = (id != null) ? businessDelegatorView.getPregunta(id) : null;
+//		} catch (Exception e) {
+//			entity = null;
+//		}
+//
+//		if (entity == null) {
+//			txtEstado.setDisabled(false);
+//			txtPregunta.setDisabled(false);
+//			txtId_Periodo.setDisabled(false);
+//			txtId_TipoEvaluacion.setDisabled(false);
+//			txtId.setDisabled(false);
+//			btnSave.setDisabled(false);
+//		} else {
+//			txtEstado.setValue(entity.getEstado());
+//			txtEstado.setDisabled(false);
+//			txtPregunta.setValue(entity.getPregunta());
+//			txtPregunta.setDisabled(false);
+//			txtId_Periodo.setValue(entity.getPeriodo().getId());
+//			txtId_Periodo.setDisabled(false);
+//			txtId_TipoEvaluacion.setValue(entity.getTipoEvaluacion().getId());
+//			txtId_TipoEvaluacion.setDisabled(false);
+//			txtId.setValue(entity.getId());
+//			txtId.setDisabled(true);
+//			btnSave.setDisabled(false);
+//
+//			if (btnDelete != null) {
+//				btnDelete.setDisabled(false);
+//			}
+//		}
+//	}
 
 	/**
 	 * <b>
@@ -380,31 +380,31 @@ public class PreguntaView implements Serializable {
 		return "";
 	}
 
-	public String action_delete_datatable(ActionEvent evt) {
-		try {
-			selectedPregunta = (PreguntaDTO) (evt.getComponent().getAttributes().get("selectedPregunta"));
-
-			Integer id = new Integer(selectedPregunta.getId());
-			entity = businessDelegatorView.getPregunta(id);
-			action_delete();
-		} catch (Exception e) {
-			FacesUtils.addErrorMessage(e.getMessage());
-		}
-
-		return "";
-	}
-
-	public String action_delete_master() {
-		try {
-			Integer id = FacesUtils.checkInteger(txtId);
-			entity = businessDelegatorView.getPregunta(id);
-			action_delete();
-		} catch (Exception e) {
-			FacesUtils.addErrorMessage(e.getMessage());
-		}
-
-		return "";
-	}
+//	public String action_delete_datatable(ActionEvent evt) {
+//		try {
+//			selectedPregunta = (PreguntaDTO) (evt.getComponent().getAttributes().get("selectedPregunta"));
+//
+//			Integer id = new Integer(selectedPregunta.getId());
+//			entity = businessDelegatorView.getPregunta(id);
+//			action_delete();
+//		} catch (Exception e) {
+//			FacesUtils.addErrorMessage(e.getMessage());
+//		}
+//
+//		return "";
+//	}
+//
+//	public String action_delete_master() {
+//		try {
+//			Integer id = FacesUtils.checkInteger(txtId);
+//			entity = businessDelegatorView.getPregunta(id);
+//			action_delete();
+//		} catch (Exception e) {
+//			FacesUtils.addErrorMessage(e.getMessage());
+//		}
+//
+//		return "";
+//	}
 
 	/**
 	 * <b>
@@ -430,45 +430,45 @@ public class PreguntaView implements Serializable {
 		}
 	}
 
-	public String action_closeDialog() {
-		setShowDialog(false);
-		action_clear();
-
-		return "";
-	}
-
-	public String actionDeleteDataTableEditable(ActionEvent evt) {
-		try {
-			selectedPregunta = (PreguntaDTO) (evt.getComponent().getAttributes().get("selectedPregunta"));
-
-			Integer id = new Integer(selectedPregunta.getId());
-			entity = businessDelegatorView.getPregunta(id);
-			businessDelegatorView.deletePregunta(entity);
-			data.remove(selectedPregunta);
-			FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYDELETED);
-			action_clear();
-		} catch (Exception e) {
-			FacesUtils.addErrorMessage(e.getMessage());
-		}
-
-		return "";
-	}
-
-	public String action_modifyWitDTO(String estado, Integer id, String pregunta, Integer id_Periodo,
-			Integer id_TipoEvaluacion) throws Exception {
-		try {
-			entity.setEstado(FacesUtils.checkString(estado));
-			entity.setPregunta(FacesUtils.checkString(pregunta));
-			businessDelegatorView.updatePregunta(entity);
-			FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYMODIFIED);
-		} catch (Exception e) {
-			// renderManager.getOnDemandRenderer("PreguntaView").requestRender();
-			FacesUtils.addErrorMessage(e.getMessage());
-			throw e;
-		}
-
-		return "";
-	}
+//	public String action_closeDialog() {
+//		setShowDialog(false);
+//		action_clear();
+//
+//		return "";
+//	}
+//
+//	public String actionDeleteDataTableEditable(ActionEvent evt) {
+//		try {
+//			selectedPregunta = (PreguntaDTO) (evt.getComponent().getAttributes().get("selectedPregunta"));
+//
+//			Integer id = new Integer(selectedPregunta.getId());
+//			entity = businessDelegatorView.getPregunta(id);
+//			businessDelegatorView.deletePregunta(entity);
+//			data.remove(selectedPregunta);
+//			FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYDELETED);
+//			action_clear();
+//		} catch (Exception e) {
+//			FacesUtils.addErrorMessage(e.getMessage());
+//		}
+//
+//		return "";
+//	}
+//
+//	public String action_modifyWitDTO(String estado, Integer id, String pregunta, Integer id_Periodo,
+//			Integer id_TipoEvaluacion) throws Exception {
+//		try {
+//			entity.setEstado(FacesUtils.checkString(estado));
+//			entity.setPregunta(FacesUtils.checkString(pregunta));
+//			businessDelegatorView.updatePregunta(entity);
+//			FacesUtils.addInfoMessage(ZMessManager.ENTITY_SUCCESFULLYMODIFIED);
+//		} catch (Exception e) {
+//			// renderManager.getOnDemandRenderer("PreguntaView").requestRender();
+//			FacesUtils.addErrorMessage(e.getMessage());
+//			throw e;
+//		}
+//
+//		return "";
+//	}
 
 	/**
 	 * <b>
