@@ -34,6 +34,9 @@ public class PreguntaDAO extends JpaDaoImpl<Pregunta, Integer>
     	this.entityManager = entityManager;
     	
     }
+    public PreguntaDAO(){
+    	
+    }
     
     
 }

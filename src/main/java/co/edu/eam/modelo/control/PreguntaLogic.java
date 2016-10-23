@@ -66,6 +66,10 @@ public class PreguntaLogic implements IPreguntaLogic {
 		 preguntaDAO = new PreguntaDAO(entityManager);
 		  
 	}
+	
+	public PreguntaLogic (){
+		
+	}
 
     @TransactionAttribute
     public List<Pregunta> getPregunta() throws Exception {
