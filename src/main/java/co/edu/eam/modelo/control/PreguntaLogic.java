@@ -20,6 +20,7 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
 
 
 /**
@@ -58,6 +59,13 @@ public class PreguntaLogic implements IPreguntaLogic {
     */
     @EJB
     ITipoEvaluacionLogic logicTipoEvaluacion2;
+    
+   
+	public PreguntaLogic(EntityManager entityManager) {
+		// log.debug(nombrePrueba);
+		 preguntaDAO = new PreguntaDAO(entityManager);
+		  
+	}
 
     @TransactionAttribute
     public List<Pregunta> getPregunta() throws Exception {
@@ -263,6 +271,8 @@ public class PreguntaLogic implements IPreguntaLogic {
         	
         	String whereCondition = "model.tipoEvaluacion.id = "+tipoEvaluacion +" and model.estado = '"+estado+"'";
             List<Pregunta> pregunta = preguntaDAO.findByCriteria(whereCondition);
+            Pregunta pregunta2 = preguntaDAO.findById(1);
+            pregunta2.getPregunta();
 
             List<PreguntaDTO> preguntaDTO = new ArrayList<PreguntaDTO>();
 

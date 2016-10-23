@@ -28,4 +28,12 @@ public class PreguntaDAO extends JpaDaoImpl<Pregunta, Integer>
     private static final Logger log = LoggerFactory.getLogger(PreguntaDAO.class);
     @PersistenceContext
     private EntityManager entityManager;
+    
+    public PreguntaDAO(EntityManager entityManager){
+    	super(entityManager,Pregunta.class);
+    	this.entityManager = entityManager;
+    	
+    }
+    
+    
 }

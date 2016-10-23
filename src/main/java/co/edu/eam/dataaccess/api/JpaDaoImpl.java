@@ -42,6 +42,13 @@ public class JpaDaoImpl<T, PK extends Serializable> implements Dao<T, PK> {
         log = LoggerFactory.getLogger(entityClass);
     }
 
+    public JpaDaoImpl(EntityManager entityManager, Class entityClass) {
+    	 super();
+    	this.entityManager = entityManager;
+    	this.entityClass = entityClass;
+    	log = LoggerFactory.getLogger(entityClass);
+    	
+    }
     public void save(T newEntity) throws DaoException {
         entityManager.persist(newEntity);
     }
